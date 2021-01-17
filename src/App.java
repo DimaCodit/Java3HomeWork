@@ -13,8 +13,8 @@ public class App {
         ArrayList test = arrayToArrayList(intArr);
         System.out.println(test);
 
-        Box<Apple> appleBox1 = new Box();
-        Box<Apple> appleBox2 = new Box();
+        Box<Apple> appleBox1 = new Box<>();
+        Box<Apple> appleBox2 = new Box<>();
 
         appleBox1.addFruit(new Apple());
         appleBox1.addFruit(new Apple());
@@ -23,8 +23,8 @@ public class App {
         appleBox2.addFruit(new Apple());
         appleBox2.addFruit(new Apple());
 
-        Box<Orange> orangeBox1 = new Box();
-        Box<Orange> orangeBox2 = new Box();
+        Box<Orange> orangeBox1 = new Box<>();
+        Box<Orange> orangeBox2 = new Box<>();
 
         orangeBox1.addFruit(new Orange());
         orangeBox1.addFruit(new Orange());
@@ -39,8 +39,6 @@ public class App {
 
         System.out.println(orangeBox1);
         System.out.println(orangeBox2);
-
-
 
     }
 
