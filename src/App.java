@@ -1,60 +1,24 @@
-import java.util.ArrayList;
+import java.sql.SQLException;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        Integer[] intArr = {1,2,3,4,5,6};
-        swapElements(intArr, 1,2);
+        Auth.connect();
 
-        for (Integer i : intArr) {
-            System.out.println(i);
-        }
+        // Авторизация
 
-        ArrayList test = arrayToArrayList(intArr);
-        System.out.println(test);
+        boolean authResult = Auth.userAuth("login1", "pass1");
 
-        Box<Apple> appleBox1 = new Box();
-        Box<Apple> appleBox2 = new Box();
+        System.out.println(authResult);
 
-        appleBox1.addFruit(new Apple());
-        appleBox1.addFruit(new Apple());
+        // Смена ника
 
-        appleBox2.addFruit(new Apple());
-        appleBox2.addFruit(new Apple());
-        appleBox2.addFruit(new Apple());
-
-        Box<Orange> orangeBox1 = new Box();
-        Box<Orange> orangeBox2 = new Box();
-
-        orangeBox1.addFruit(new Orange());
-        orangeBox1.addFruit(new Orange());
-
-        orangeBox2.addFruit(new Orange());
-        orangeBox2.addFruit(new Orange());
-        orangeBox2.addFruit(new Orange());
-
-        System.out.println(appleBox1.compare(orangeBox1));
-
-        orangeBox1.moveContent(orangeBox2);
-
-        System.out.println(orangeBox1);
-        System.out.println(orangeBox2);
-
+        boolean changeNickResult = Auth.changeNick("login1", "Dude");
 
 
     }
 
-    public static <E> void swapElements(E[] arrayForSwap, int index1, int index2 ) {
-        E temp = arrayForSwap[index1];
-        arrayForSwap[index1] = arrayForSwap[index2];
-        arrayForSwap[index2] = temp;
-    }
-
-    public static <E> ArrayList<E> arrayToArrayList(E[] array) {
-        ArrayList <E> arrayList = new ArrayList<>();
-        for (E element : array) {
-            arrayList.add(element);
-        }
-        return arrayList;
-    }
 }
+
+
+
