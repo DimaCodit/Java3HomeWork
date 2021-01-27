@@ -1,20 +1,35 @@
 import java.sql.SQLException;
 
 public class App {
+    public static synchronized void printLetter(char letter) {
+        System.out.println(letter);
+    }
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        Auth.connect();
+        Thread printA = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                printLetter('A');
+            }
+        });
 
-        // Авторизация
+        Thread printB = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                printLetter('B');
+            }
+        });
 
-        boolean authResult = Auth.userAuth("login1", "pass1");
+        Thread printC = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                printLetter('C');
+            }
+        });
 
-        System.out.println(authResult);
-
-        // Смена ника
-
-        boolean changeNickResult = Auth.changeNick("login1", "Dude");
-
+        printA.start();
+        printB.start();
+        printC.start();
 
     }
 
