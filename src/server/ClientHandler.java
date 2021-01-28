@@ -169,6 +169,7 @@ public class ClientHandler {
 
     void sendMsg(String message) {
         try {
+            message = Censored.toCensored(message);
             out.writeUTF(message);
             // Пишем историю сообщений
             if(!message.startsWith("/")) {
